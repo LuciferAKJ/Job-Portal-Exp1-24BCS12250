@@ -17,7 +17,6 @@
     </ul>
 </div>
 <div class="dropdown-section">
-
     <div class="column">
         <h3>Popular Categories</h3>
         <p>IT Jobs</p>
@@ -38,19 +37,17 @@
     </div>
     <div class="column">
         <h3>Jobs by Location</h3>
-            <p>Delhi</p>
-            <p>Mumbai</p>
-            <p>Bangalore</p>
-            <p>Chandigarh</p>
-            <p>Panchkula</p>
-            <p>Jammu</p>
+        <p>Delhi</p>
+        <p>Mumbai</p>
+        <p>Bangalore</p>
+        <p>Chandigarh</p>
+        <p>Panchkula</p>
+        <p>Jammu</p>
     </div>
-
 </div>
 <div class="search-section">
     <h1>Find your dream job now</h1>
     <p>5 lakh+ jobs for you to explore</p>
-
     <div class="search-box">
         <input type="text" placeholder="Enter skills / designation / company">
         <select>
@@ -66,7 +63,6 @@
 </div>
 <div class="companies">
     <h2>Top companies hiring now</h2>
-
     <div class="company-list">
         <div class="company">MNCs <br><small>2.1K+ Hiring</small></div>
         <div class="company">Internet <br><small>250+ Hiring</small></div>
@@ -75,6 +71,26 @@
         <div class="company">Startups <br><small>750+ Hiring</small></div>
     </div>
 </div>
+
+<!-- New Section: Post a Job and Dynamic Jobs -->
+<div class="post-job-section">
+    <h2>Post a New Job</h2>
+    <form id="jobForm" class="job-form">
+        <input type="text" id="jobTitle" placeholder="Job Title" required>
+        <input type="text" id="companyName" placeholder="Company Name" required>
+        <input type="text" id="location" placeholder="Location" required>
+        <textarea id="description" placeholder="Job Description" rows="3" required></textarea>
+        <button type="submit" id="submitBtn">Post Job</button>
+    </form>
+</div>
+
+<div class="dynamic-jobs">
+    <h2>Available Opportunities</h2>
+    <div id="jobCardContainer" class="featured-list">
+        <!-- Dynamic job cards will appear here -->
+    </div>
+</div>
+
 <div class="featured">
     <h2>Featured companies actively hiring</h2>
     <div class="featured-list">
@@ -103,5 +119,6 @@
     <p>© 2026 All Rights Reserved.</p>
 </div>
 
+<script src="script.js"></script>
 </body>
-</html>
+</html>   
