@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Job Portal | Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobSpark | Find Your Dream Job</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="navbar">
-    <div class="logo">Job Portal</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">Job<span>Spark</span></div>
     <ul class="menu">
         <li>Jobs</li>
         <li>Companies</li>
@@ -15,7 +19,10 @@
         <li>Login</li>
         <li class="register">Register</li>
     </ul>
-</div>
+    <div class="hamburger" id="hamburger">&#9776;</div>
+</nav>
+
+<!-- CATEGORY SECTION -->
 <div class="dropdown-section">
     <div class="column">
         <h3>Popular Categories</h3>
@@ -45,80 +52,182 @@
         <p>Jammu</p>
     </div>
 </div>
+
 <div class="search-section">
-    <h1>Find your dream job now</h1>
-    <p>5 lakh+ jobs for you to explore</p>
+    <div class="hero-badge">🚀 #1 Job Portal in India</div>
+    <h1>Find your <span class="highlight">dream job</span> now</h1>
+    <p class="hero-sub">5 lakh+ opportunities waiting for you to explore</p>
     <div class="search-box">
-        <input type="text" placeholder="Enter skills / designation / company">
-        <select>
-            <option>Select experience</option>
+        <div class="search-field">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="heroSearch" placeholder="Enter skills / designation / company">
+        </div>
+        <div class="divider"></div>
+        <select id="heroExp">
+            <option value="">Select experience</option>
             <option>Fresher</option>
             <option>1-3 Years</option>
             <option>3-5 Years</option>
             <option>5+ Years</option>
         </select>
-        <input type="text" placeholder="Enter location">
-        <button>Search</button>
+        <div class="divider"></div>
+        <div class="search-field">
+            <span class="search-icon">📍</span>
+            <input type="text" id="heroLocation" placeholder="Enter location">
+        </div>
+        <button onclick="heroSearch()">Search Jobs</button>
     </div>
-</div>
-<div class="companies">
-    <h2>Top companies hiring now</h2>
-    <div class="company-list">
-        <div class="company">MNCs <br><small>2.1K+ Hiring</small></div>
-        <div class="company">Internet <br><small>250+ Hiring</small></div>
-        <div class="company">Manufacturing <br><small>1K+ Hiring</small></div>
-        <div class="company">Product <br><small>1.2K+ Hiring</small></div>
-        <div class="company">Startups <br><small>750+ Hiring</small></div>
+    <div class="hero-tags">
+        <span>Trending:</span>
+        <a href="#">React Developer</a>
+        <a href="#">Data Analyst</a>
+        <a href="#">Product Manager</a>
+        <a href="#">UI/UX Designer</a>
     </div>
 </div>
 
-<!-- New Section: Post a Job and Dynamic Jobs -->
-<div class="post-job-section">
-    <h2>Post a New Job</h2>
+<div class="companies">
+    <h2>Top companies <span>hiring now</span></h2>
+    <div class="company-list">
+        <div class="company"><div class="company-icon">🏦</div>MNCs<br><small>2.1K+ Hiring</small></div>
+        <div class="company"><div class="company-icon">🌐</div>Internet<br><small>250+ Hiring</small></div>
+        <div class="company"><div class="company-icon">🏭</div>Manufacturing<br><small>1K+ Hiring</small></div>
+        <div class="company"><div class="company-icon">📦</div>Product<br><small>1.2K+ Hiring</small></div>
+        <div class="company"><div class="company-icon">🚀</div>Startups<br><small>750+ Hiring</small></div>
+    </div>
+</div>
+
+<div class="post-job-section" id="postJobSection">
+    <div class="section-header">
+        <h2>📋 Post a New Job</h2>
+        <p>Reach thousands of qualified candidates instantly</p>
+    </div>
     <form id="jobForm" class="job-form">
-        <input type="text" id="jobTitle" placeholder="Job Title" required>
-        <input type="text" id="companyName" placeholder="Company Name" required>
-        <input type="text" id="location" placeholder="Location" required>
-        <textarea id="description" placeholder="Job Description" rows="3" required></textarea>
-        <button type="submit" id="submitBtn">Post Job</button>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Job Title *</label>
+                <input type="text" id="jobTitle" placeholder="e.g. Senior React Developer" required>
+            </div>
+            <div class="form-group">
+                <label>Company Name *</label>
+                <input type="text" id="companyName" placeholder="e.g. Google India" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Location *</label>
+                <input type="text" id="location" placeholder="e.g. Bangalore, Remote" required>
+            </div>
+            <div class="form-group">
+                <label>Salary Range</label>
+                <input type="text" id="salary" placeholder="e.g. ₹8–12 LPA">
+            </div>
+        </div>
+        <div class="form-group full-width">
+            <label>Job Description *</label>
+            <textarea id="description" placeholder="Describe the role, responsibilities, and requirements..." rows="4" required></textarea>
+        </div>
+        <div class="form-actions">
+            <button type="button" class="btn-cancel" id="cancelBtn" style="display:none;" onclick="cancelEdit()">Cancel</button>
+            <button type="submit" id="submitBtn">🚀 Post Job</button>
+        </div>
     </form>
 </div>
 
-<div class="dynamic-jobs">
-    <h2>Available Opportunities</h2>
+<div class="dynamic-jobs" id="dynamicJobsSection">
+    <div class="section-header">
+        <h2>🔎 Available Opportunities</h2>
+        <p>Browse and search through posted jobs</p>
+    </div>
+
+    <div class="job-filter-bar">
+        <input type="text" id="jobSearch" placeholder="🔍  Search by title, company, or location..." oninput="filterJobs()">
+        <select id="filterLocation" onchange="filterJobs()">
+            <option value="">All Locations</option>
+        </select>
+        <select id="filterSalary" onchange="filterJobs()">
+            <option value="">All Salaries</option>
+            <option value="low">Budget (< ₹5 LPA)</option>
+            <option value="mid">Mid (₹5–12 LPA)</option>
+            <option value="high">Senior (> ₹12 LPA)</option>
+        </select>
+        <span id="jobCount" class="job-count">0 jobs found</span>
+    </div>
+
     <div id="jobCardContainer" class="featured-list">
-        <!-- Dynamic job cards will appear here -->
+        <div class="empty-state" id="emptyState">
+            <div class="empty-icon">📭</div>
+            <p>No jobs posted yet. Be the first to post a job above!</p>
+        </div>
     </div>
 </div>
 
 <div class="featured">
-    <h2>Featured companies actively hiring</h2>
+    <div class="section-header">
+        <h2>⭐ Featured companies actively hiring</h2>
+        <p>Trusted employers looking for talent like you</p>
+    </div>
     <div class="featured-list">
-        <div class="card">
+        <div class="card featured-card">
+            <div class="company-logo">IN</div>
             <h4>Infosys</h4>
-            <p>Rating: 4.1</p>
-            <p>Global IT services company</p>
-            <button>View Jobs</button>
+            <div class="rating">★★★★☆ <span>4.1</span></div>
+            <p>Global IT services & consulting company</p>
+            <div class="tags"><span>IT</span><span>Remote</span><span>MNC</span></div>
+            <button>View Jobs →</button>
         </div>
-        <div class="card">
+        <div class="card featured-card">
+            <div class="company-logo goog">G</div>
             <h4>Google</h4>
-            <p>Rating: 4.0</p>
-            <p>Engineering & technology leader</p>
-            <button>View Jobs</button>
+            <div class="rating">★★★★☆ <span>4.0</span></div>
+            <p>Engineering & technology industry leader</p>
+            <div class="tags"><span>Tech</span><span>Product</span><span>AI</span></div>
+            <button>View Jobs →</button>
         </div>
-        <div class="card">
+        <div class="card featured-card">
+            <div class="company-logo msft">MS</div>
             <h4>Microsoft</h4>
-            <p>Rating: 4.5</p>
-            <p>Digital services company</p>
-            <button>View Jobs</button>
+            <div class="rating">★★★★½ <span>4.5</span></div>
+            <p>Global digital services & cloud company</p>
+            <div class="tags"><span>Cloud</span><span>SaaS</span><span>MNC</span></div>
+            <button>View Jobs →</button>
+        </div>
+        <div class="card featured-card">
+            <div class="company-logo amz">A</div>
+            <h4>Amazon</h4>
+            <div class="rating">★★★★☆ <span>3.9</span></div>
+            <p>eCommerce & AWS cloud solutions leader</p>
+            <div class="tags"><span>eCommerce</span><span>AWS</span><span>Ops</span></div>
+            <button>View Jobs →</button>
         </div>
     </div>
 </div>
-<div class="footer">
-    <p>About Us | Careers | Help Center | Privacy Policy</p>
-    <p>© 2026 All Rights Reserved.</p>
+
+<div class="stats-section">
+    <div class="stat"><h3>5L+</h3><p>Active Jobs</p></div>
+    <div class="stat"><h3>20K+</h3><p>Companies</p></div>
+    <div class="stat"><h3>50L+</h3><p>Job Seekers</p></div>
+    <div class="stat"><h3>98%</h3><p>Success Rate</p></div>
 </div>
 
+<footer class="footer">
+    <div class="footer-top">
+        <div class="footer-brand">
+            <div class="logo white">Job<span>Spark</span></div>
+            <p>Connecting talent with opportunity across India.</p>
+        </div>
+        <div class="footer-links">
+            <div><h4>Company</h4><a href="#">About Us</a><a href="#">Careers</a><a href="#">Blog</a></div>
+            <div><h4>Support</h4><a href="#">Help Center</a><a href="#">Privacy Policy</a><a href="#">Terms</a></div>
+            <div><h4>For Employers</h4><a href="#">Post a Job</a><a href="#">Pricing</a><a href="#">Dashboard</a></div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 JobSpark. All Rights Reserved. Made with ❤️ in India.</p>
+    </div>
+</footer>
+
+<div id="toast" class="toast"></div>
 <script src="script.js"></script>
 </body>
-</html>   
+</html>
